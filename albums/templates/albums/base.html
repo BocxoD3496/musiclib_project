@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>MusicLib</title>
+  <link rel="stylesheet" href="{% static 'albums/css/styles.css' %}">
+</head>
+<body>
+  <header>
+    <h1>MusicLib — альбомы</h1>
+    <nav>
+      <a href="{% url 'albums:album_create' %}">Добавить</a> |
+      <a href="{% url 'albums:files_list' %}">Экспортированные файлы</a> |
+      <a href="{% url 'albums:upload_file' %}">Загрузить</a> |
+      <a href="{% url 'albums:uploaded_contents' %}">Показать загруженные</a>
+    </nav>
+  </header>
+  <main>
+    {% if messages %}
+      <ul class="messages">
+        {% for m in messages %}
+          <li class="{{ m.tags }}">{{ m }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

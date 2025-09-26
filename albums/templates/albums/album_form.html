@@ -1,0 +1,9 @@
+{% extends 'albums/base.html' %}
+{% block content %}
+  <h2>Добавить альбом и сохранить в файл</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить в файл</button>
+  </form>
+{% endblock %}
